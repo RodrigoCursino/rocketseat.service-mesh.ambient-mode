@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: app
+  labels:
+    name: app
+    # ativar o sidecar do istio automatico nesta namespace
+    istio-injection: enabled
