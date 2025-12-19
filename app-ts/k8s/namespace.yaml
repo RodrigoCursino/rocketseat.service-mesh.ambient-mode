@@ -5,4 +5,4 @@ metadata:
   labels:
     name: app
     # ativar o sidecar do istio automatico nesta namespace
-    istio-injection: enabled
+    istio.io/dataplane-mode: ambient
