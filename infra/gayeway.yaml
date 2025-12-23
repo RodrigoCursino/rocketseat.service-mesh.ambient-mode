@@ -1,0 +1,43 @@
+# configuração do gateway 
+# apiVersion: gateway.networking.k8s.io/v1
+# kind: Gateway
+
+# metadata:
+#   name: app-service-mesh-gateway
+
+# spec:
+#   gatewayClassName: istio
+#   listeners:
+#   - name: http
+#     port: 80
+#     protocol: HTTP
+#     allowedRoutes:
+#       namespaces:
+#         from: Same
+
+# configuração do waypoint
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+
+metadata:
+  name: waypoint
+  namespace: app
+
+spec:
+  gatewayClassName: istio-waypoint
+  listeners:
+    - name: mesh
+      protocol: HBONE
+      port: 15008
+      allowedRoutes:
+        namespaces:
+          from: Same
+
+# importante: o Gateway deve ser instalado via linha de comando:
+# kubectl get crd gateways.gateway.networking.k8s.io &> /dev/null || \
+#   kubectl apply --server-side -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.4.0/experimental-install.yaml
+# instalar o waypoint via istioctl:
+# istioctl waypoint apply --namespace <seu-namespace> 
+# kubectl label namespace <seu-namespace> istio.io/use-waypoint=waypoint configurar via linha de comando ou no arquivo namespace.yaml
+# visualizar configiuração de recursos do kubernets:
+# kubectl get namespace <seu-namespace> -o yaml

@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: app
+  labels:
+    name: app
+    # ativar o sidecar do istio automatico nesta namespace
+    istio.io/dataplane-mode: ambient
+    istio-io/use-waypoint: waypoint # label para ativar o waypoint nesta namespace tem que ser igual ao nome do gateway waypoint criado no arquivo infra/gayeway.yaml linha 23
+    

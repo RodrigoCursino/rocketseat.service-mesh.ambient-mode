@@ -1,0 +1,24 @@
+# essa configuração só é necessária se for utilizar o gateway
+# apiVersion: gateway.networking.k8s.io/v1
+# kind: HTTPRoute
+
+# metadata:
+#   name: app-service-mesh-route
+#   namespace: app
+
+# spec:
+#   # Referencia o Gateway criado anteriormente
+#   parentRefs:
+#   - name: app-service-mesh-gateway
+#   # Define as regras de roteamento para o serviço app-service-mesh-svc
+#   rules:
+#   - matches:
+#     - path:
+#         type: Exact
+#         value: /healthz
+#     - path:
+#         type: Exact
+#         value: /readyz
+#     backendRefs:
+#     - name: app-service-mesh-svc
+#       port: 80
