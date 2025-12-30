@@ -7,6 +7,7 @@ nodes:
   - role: worker
   - role: worker
 
+
 # criar o cluster com:
 # kind create cluster --config=infra/kind.yaml
 # acessar o cluster com:
