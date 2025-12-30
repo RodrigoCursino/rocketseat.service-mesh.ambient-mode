@@ -1,0 +1,11 @@
+apiVersion: security.istio.io/v1
+kind: PeerAuthentication
+
+metadata:
+  name: mtls-default
+  #namespace: app # aplicar em uma namespace específica
+  namespace: istio-system # aplicar globalmente em todo o cluster
+
+spec:
+  mtls:
+    mode: STRICT
